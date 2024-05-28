@@ -5,6 +5,9 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  optimizeDeps: {
+    include: ['date-fns'],
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

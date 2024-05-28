@@ -10,6 +10,7 @@
       {{ state.message }}
     </v-alert>
   </v-snackbar>
+  <slot></slot>
 </template>
 
 <script lang="ts">

@@ -48,9 +48,7 @@
     </v-navigation-drawer>
 
     <v-main>
-      <Spinner>
-        <router-view></router-view>
-      </Spinner>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
