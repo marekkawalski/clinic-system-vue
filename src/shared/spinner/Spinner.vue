@@ -9,20 +9,10 @@
   </v-container>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { useSpinner } from '@/shared/spinner/composables/useSpinner.ts';
 
-export default defineComponent({
-  name: 'Spinner',
-  setup() {
-    const { state } = useSpinner();
-
-    return {
-      state,
-    };
-  },
-});
+const { state } = useSpinner();
 </script>
 <style scoped>
 .spinner {

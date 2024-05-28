@@ -13,19 +13,8 @@
   <slot></slot>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { useSnackbar } from '@/shared/snackbar/composables/useSnackbar.ts';
 
-export default defineComponent({
-  name: 'Snackbar',
-  setup() {
-    const { state, hideSnackbar } = useSnackbar();
-
-    return {
-      state,
-      hideSnackbar,
-    };
-  },
-});
+const { state, hideSnackbar } = useSnackbar();
 </script>

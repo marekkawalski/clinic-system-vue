@@ -37,7 +37,7 @@
     >
       <v-list>
         <NavItem
-          v-for="item in navItems()"
+          v-for="item in navItems"
           :listItemText="item.listItemText"
           :listItemPath="item.listItemPath"
           :requireLogin="item.requireLogin"
@@ -53,47 +53,23 @@
   </v-app>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue';
+<script setup lang="ts">
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Spinner from '@/shared/spinner/Spinner.vue';
-import { navItems } from '@/shared/components/nav/navItems.ts';
-import NavItem from '@/shared/components/nav/NavItem.vue';
+import { navItems } from '@/shared/nav/navItems.ts';
+import NavItem from '@/shared/nav/NavItem.vue';
 import { useAuth } from '@/core/authentication/composables/useAuth.ts';
 import { PathConstants } from '@/core/constants/path.constants.ts';
 
-export default defineComponent({
-  name: 'Nav',
-  computed: {
-    PathConstants() {
-      return PathConstants;
-    },
-  },
-  methods: {
-    navItems() {
-      return navItems;
-    },
-  },
-  components: { NavItem, Spinner },
-  setup() {
-    const drawer = ref(false);
+const drawer = ref(false);
 
-    const router = useRouter();
-    const { authData, logout } = useAuth();
+const router = useRouter();
+const { authData, logout } = useAuth();
 
-    const navigate = (path: string) => {
-      router.push(path);
-      drawer.value = false;
-    };
-
-    return {
-      drawer,
-      navigate,
-      authData,
-      logout,
-    };
-  },
-});
+const navigate = (path: string) => {
+  router.push(path);
+  drawer.value = false;
+};
 </script>
 
 <style scoped>

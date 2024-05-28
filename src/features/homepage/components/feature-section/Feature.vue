@@ -9,24 +9,21 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType } from 'vue';
+<script setup lang="ts">
+import { PropType } from 'vue';
 
-export default defineComponent({
-  name: 'Feature',
-  props: {
-    icon: {
-      type: String as PropType<string>,
-      required: true,
-    },
-    title: {
-      type: String as PropType<string>,
-      required: true,
-    },
-    description: {
-      type: String as PropType<string>,
-      required: true,
-    },
+defineProps({
+  icon: {
+    type: String as PropType<string>,
+    required: true,
+  },
+  title: {
+    type: String as PropType<string>,
+    required: true,
+  },
+  description: {
+    type: String as PropType<string>,
+    required: true,
   },
 });
 </script>

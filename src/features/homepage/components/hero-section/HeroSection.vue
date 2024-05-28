@@ -7,25 +7,15 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { PathConstants } from '@/core/constants/path.constants';
 
-export default defineComponent({
-  name: 'Hero',
-  setup() {
-    const router = useRouter();
+const router = useRouter();
 
-    const goToDoctors = () => {
-      router.push('/' + PathConstants.DOCTORS_PATH);
-    };
-
-    return {
-      goToDoctors,
-    };
-  },
-});
+const goToDoctors = () => {
+  router.push('/' + PathConstants.DOCTORS_PATH);
+};
 </script>
 
 <style scoped>

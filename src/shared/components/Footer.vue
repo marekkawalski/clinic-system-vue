@@ -71,13 +71,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'Footer',
-});
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 .footer {
