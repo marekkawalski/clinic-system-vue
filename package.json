@@ -12,6 +12,7 @@
     "@mdi/font": "^7.4.47",
     "@mdi/js": "^7.4.47",
     "@types/vue-router": "^4.3.2",
+    "axios": "^1.7.2",
     "vee-validate": "^4.12.8",
     "vue": "^3.4.21",
     "vue-router": "^4.3.2",
@@ -19,6 +20,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/vue-router": "^2.0.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "sass": "^1.75.0",

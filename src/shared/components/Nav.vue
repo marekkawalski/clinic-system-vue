@@ -30,7 +30,9 @@
     </v-navigation-drawer>
 
     <v-main>
-      <router-view></router-view>
+      <Spinner>
+        <router-view></router-view>
+      </Spinner>
     </v-main>
   </v-app>
 </template>
@@ -38,9 +40,11 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import Spinner from '@/shared/spinner/Spinner.vue';
 
 export default defineComponent({
   name: 'Nav',
+  components: { Spinner },
   setup() {
     const drawer = ref(false);
     const items = ref([
