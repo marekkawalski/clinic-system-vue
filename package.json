@@ -9,9 +9,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.4.2",
     "@mdi/font": "^7.4.47",
     "@mdi/js": "^7.4.47",
     "@types/vue-router": "^4.3.2",
+    "@vee-validate/zod": "^4.12.8",
     "axios": "^1.7.2",
     "date-fns": "^3.6.0",
     "vee-validate": "^4.12.8",
