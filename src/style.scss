@@ -9,4 +9,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+h2 {
+  text-transform: capitalize;
+  font-size: 3rem !important;
+  letter-spacing: normal;
+  text-align: center;
+  padding: 4rem;
+  font-weight: 400;
+}
 
+.no-link {
+  text-decoration: none;
+  color: inherit;
+}
