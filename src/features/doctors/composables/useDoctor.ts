@@ -5,7 +5,6 @@ import { Doctor } from '@/core/models/Doctor.ts';
 import { DailySchedule } from '@/core/models/user/Schedule.ts';
 import { AvailableAppointments } from '@/features/doctors/model/AvailableAppointments.ts';
 import { useAxiosInstance } from '@/shared/axios-instance/useAxiosInstance.ts';
-import { Appointment } from '@/core/models/appointment/Appointment.ts';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 const httpParamsHelper = new HttpParamsHelper();
@@ -65,7 +64,7 @@ export const useDoctor = () => {
     const response = await axiosInstance.get<AvailableAppointments[]>(
       `/doctors/${doctorId}/examinations/${examinationId}/available-appointments/date/${date}`,
     );
-    return response.data.map((appointment: Appointment) => {
+    return response.data.map((appointment: AvailableAppointments) => {
       appointment.date = new Date(appointment.date);
       return appointment;
     });
