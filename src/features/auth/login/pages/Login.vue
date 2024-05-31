@@ -112,8 +112,8 @@ const navigate = (path: string) => {
 </script>
 
 <style scoped>
-@import 'src/styles/components/form/form-page.scss';
-@import 'src/styles/components/form/form.scss';
+@import '@/styles/components/form/form.scss';
+@import '@/styles/components/form/form-page.scss';
 
 .headline {
   font-weight: 400 !important;

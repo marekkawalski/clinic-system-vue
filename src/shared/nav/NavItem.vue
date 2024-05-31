@@ -22,8 +22,7 @@ const props = defineProps({
   },
   requireLogin: {
     type: Boolean as PropType<boolean>,
-    required: false,
-    default: false,
+    required: true,
   },
   allowedRoles: {
     type: Array as PropType<UserRole[]>,

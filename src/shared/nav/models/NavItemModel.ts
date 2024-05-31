@@ -4,5 +4,5 @@ export interface NavItemModel {
   listItemText: string;
   listItemPath: string;
   allowedRoles?: UserRole[];
-  requireLogin?: boolean;
+  requireLogin: boolean;
 }

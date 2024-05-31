@@ -1,4 +1,4 @@
-import { computed, reactive } from 'vue';
+import { computed, reactive, ref } from 'vue';
 import { AuthData } from '@/core/models/AuthData.ts';
 import { User } from '@/core/models/user/User.ts';
 import { PathConstants } from '@/core/constants/path.constants.ts';
@@ -7,7 +7,6 @@ import { UserRole } from '@/core/enums/UserRole.ts';
 import axios from 'axios';
 
 const AUTH_DATA_KEY = 'authData';
-
 const API_URL = import.meta.env.VITE_API_URL;
 
 const state = reactive({
@@ -24,6 +23,7 @@ const initAuthData = () => {
 
 const useAuth = () => {
   const authData = computed(() => state.authData);
+  const redirectUrl = ref<string | null>(state.redirectUrl);
 
   const login = async (email: string, password: string): Promise<User> => {
     const token = `Basic ${window.btoa(email + ':' + password)}`;
@@ -60,14 +60,16 @@ const useAuth = () => {
     return false;
   };
 
+  // Initialize auth data when the composable is used
+  initAuthData();
+
   return {
     authData,
+    redirectUrl,
     login,
     logout,
     checkAccess,
   };
 };
-
-initAuthData();
 
 export { useAuth };
