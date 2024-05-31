@@ -271,7 +271,12 @@ onMounted(() => {
 
 const onSubmit = handleSubmit(async formData => {
   const data = {
-    ...formData.basicData,
+    name: formData.basicData.name,
+    surname: formData.basicData.surname,
+    email: formData.basicData.email,
+    phoneNumber: formData.basicData.phoneNumber,
+    pesel: formData.basicData.pesel,
+    password: formData.basicData.password,
     address: formData.address,
     role: formData.adminManagedData.role,
     isEnabled: formData.adminManagedData.enabled,
@@ -300,9 +305,7 @@ const onSubmit = handleSubmit(async formData => {
     if (props.formType === FormType.PopupForm && props.onClose) {
       props.onClose();
     }
-  } catch (error) {
-    showSnackbar('An error occurred', 'error');
-  }
+  } catch (error: any) {}
 });
 </script>
 

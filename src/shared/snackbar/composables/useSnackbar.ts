@@ -1,4 +1,4 @@
-import { inject, provide, reactive, readonly } from 'vue';
+import { inject, provide, reactive } from 'vue';
 import {
   SnackbarContext,
   SnackbarSeverity,
@@ -26,7 +26,7 @@ const SNACKBAR_KEY = Symbol('Snackbar');
 
 export const provideSnackbar = () => {
   provide<SnackbarContext>(SNACKBAR_KEY, {
-    state: readonly(state) as SnackbarState,
+    state: state as SnackbarState,
     showSnackbar,
     hideSnackbar,
   });

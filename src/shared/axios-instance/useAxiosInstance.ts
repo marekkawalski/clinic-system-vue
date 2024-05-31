@@ -44,9 +44,9 @@ const createAxiosInstance = (): AxiosInstance => {
           showSnackbar(`HTTP error: ${errorMessage}`, 'error');
         }
       } else {
-        const errorMessage = error.message;
+        const errorMessage = error?.error?.message ?? error?.message;
         console.error('An error occurred:', errorMessage);
-        showSnackbar(`An error occurred: ${errorMessage}`, 'error');
+        showSnackbar(`${errorMessage}`, 'error');
       }
 
       return Promise.reject(error);
