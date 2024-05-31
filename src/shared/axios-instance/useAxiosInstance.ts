@@ -1,8 +1,6 @@
 import { inject, provide } from 'vue';
-import { useRouter } from 'vue-router';
 import { useAuth } from '@/core/authentication/composables/useAuth.ts';
 import { useSnackbar } from '@/shared/snackbar/composables/useSnackbar.ts';
-import { PathConstants } from '@/core/constants/path.constants.ts';
 import axios, { AxiosInstance } from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -18,7 +16,6 @@ const axiosInstance: AxiosInstance = axios.create({
 const createAxiosInstance = (): AxiosInstance => {
   const { showSnackbar } = useSnackbar();
   const { authData, logout } = useAuth();
-  const router = useRouter();
 
   axiosInstance.interceptors.request.use((config: any) => {
     const newConfig = { ...config };
@@ -38,7 +35,6 @@ const createAxiosInstance = (): AxiosInstance => {
           console.error('Unauthorized request!');
           showSnackbar('Unauthorized request!', 'error');
           logout();
-          router.push(PathConstants.LOGIN_PATH).then(() => {});
         } else {
           const errorMessage = error.response.data?.message || error.message;
           showSnackbar(`HTTP error: ${errorMessage}`, 'error');
