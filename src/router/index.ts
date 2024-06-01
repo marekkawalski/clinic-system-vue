@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 import { PathConstants } from '@/core/constants/path.constants.ts';
 import Home from '@/features/homepage/pages/Home.vue';
 import Doctors from '@/features/doctors/pages/Doctors.vue';
@@ -6,8 +6,15 @@ import Login from '@/features/auth/login/pages/Login.vue';
 import MyAppointments from '@/features/my-appointments/pages/MyAppointments.vue';
 import { authGuard } from '@/core/authentication/authGuard.ts';
 import Registration from '@/features/auth/registration/pages/Registration.vue';
+import ManageUsers from '@/features/manage-users/pages/ManageUsers.vue';
+import { UserRole } from '@/core/enums/UserRole.ts';
 
-const routes = [
+export type RouteMeta = {
+  requiresAuth: boolean;
+  roles: UserRole[];
+};
+
+const routes: RouteRecordRaw[] = [
   {
     path: PathConstants.HOME_PATH,
     name: 'Home',
@@ -33,7 +40,24 @@ const routes = [
     name: 'My Appointments',
     component: MyAppointments,
     beforeEnter: authGuard,
-    meta: { requiresAuth: true },
+    meta: <RouteMeta>{ requiresAuth: true },
+  },
+  {
+    path: PathConstants.MANAGE_USERS_PATH,
+    name: 'Manage Users',
+    component: () => import('@/features/manage-users/pages/ManageUsers.vue'),
+    beforeEnter: authGuard,
+    meta: <RouteMeta>{ requiresAuth: true },
+  },
+  {
+    path: PathConstants.MANAGE_USERS_PATH,
+    name: 'Manage Users',
+    component: ManageUsers,
+    beforeEnter: authGuard,
+    meta: <RouteMeta>{
+      requiresAuth: true,
+      roles: [UserRole.DOCTOR, UserRole.ADMIN, UserRole.REGISTRAR],
+    },
   },
 ];
 

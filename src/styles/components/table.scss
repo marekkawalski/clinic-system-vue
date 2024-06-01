@@ -1,7 +1,12 @@
 .actions-section {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding-bottom: 1em;
   gap: 1.5em;
   justify-items: center;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
 }

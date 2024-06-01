@@ -6,7 +6,7 @@
       label="Page Size"
       variant="solo"
       @update:modelValue="handlePageSizeChange"
-      class="d-flex paginator-select"
+      class="paginator-select"
     />
     <v-pagination
       v-model="pageNum"
@@ -61,13 +61,18 @@ watch(
 );
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .paginator-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  justify-items: center;
   padding: 2em;
+  gap: 2em;
+
+  .paginator-select {
+    display: block;
+    min-width: fit-content;
+    max-width: 100px;
+  }
 }
 </style>
