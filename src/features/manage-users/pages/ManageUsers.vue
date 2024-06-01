@@ -63,6 +63,7 @@
         :user="selectedUser"
         :on-close="handleCloseEditDialog"
       />
+      <AddUser :open="openAddDialog" :on-close="handleCloseAddDialog" />
     </v-row>
   </div>
 </template>
@@ -77,6 +78,7 @@ import { PageRequestResponseData } from '@/shared/model/PageRequestResponseData.
 import { UserPageRequestParams } from '@/shared/model/UserPageRequestParams.ts';
 import Paginator from '@/shared/components/Paginator.vue';
 import EditUser from '@/features/manage-users/components/EditUser.vue';
+import AddUser from '@/features/manage-users/components/AddUser.vue';
 
 const { getPagedUsers } = useUser();
 const { showSpinner, hideSpinner } = useSpinner();
@@ -87,6 +89,7 @@ const pageUserResponseData = ref<PageRequestResponseData<User>>();
 const requestParams = ref<UserPageRequestParams>({});
 const showDisabled = ref<boolean>(false);
 const openEditDialog = ref<boolean>(false);
+const openAddDialog = ref<boolean>(false);
 const selectedUser = ref<User | null>(null);
 
 const fetchPagedUsers = async () => {
@@ -176,7 +179,13 @@ const handleCloseEditDialog = async () => {
 };
 
 const handleOpenAddDialog = () => {
-  // Logic to open add user dialog
+  openAddDialog.value = true;
+
+  o;
+};
+const handleCloseAddDialog = async () => {
+  openAddDialog.value = false;
+  await fetchPagedUsers();
 };
 </script>
 
