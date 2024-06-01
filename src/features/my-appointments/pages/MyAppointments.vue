@@ -80,7 +80,6 @@ const loadAppointments = async () => {
     );
     appointments.value = response.content;
     pageAppointmentResponseData.value = response;
-    hideSpinner();
     tableHelper.setSpecifiedBaseColumnNamesFromRequestData(
       response,
       [
@@ -102,6 +101,8 @@ const loadAppointments = async () => {
     );
   } catch {
     showSnackbar('No appointments found.', 'info');
+  } finally {
+    hideSpinner();
   }
 };
 
