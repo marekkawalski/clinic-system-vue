@@ -13,6 +13,7 @@
       :length="totalPages"
       @update:modelValue="handlePageChange"
       :total-visible="7"
+      :start="0"
     />
   </v-row>
 </template>
@@ -56,7 +57,7 @@ watch(
   () => props.requestParams,
   newVal => {
     pageSize.value = newVal['page-size'] ?? 10;
-    pageNum.value = newVal['page-num'] ?? 1;
+    pageNum.value = newVal['page-num'] ?? 0;
   },
 );
 </script>

@@ -31,10 +31,11 @@
               <th
                 v-for="(column, i) in tableHelper.baseColumnNames"
                 :key="column"
+                :id="`th-${i}`"
               >
                 {{ tableHelper.baseColumnTitles[i] }}
               </th>
-              <th>Edit</th>
+              <th id="th-edit">Edit</th>
             </tr>
           </thead>
           <tbody>
@@ -57,11 +58,11 @@
         />
       </div>
 
-      <!--      <EditUserComponent-->
-      <!--        :open="openEditDialog"-->
-      <!--        @close="handleCloseEditDialog"-->
-      <!--        :user="selectedUser"-->
-      <!--      />-->
+      <EditUser
+        :open="openEditDialog"
+        :user="selectedUser"
+        :on-close="handleCloseEditDialog"
+      />
     </v-row>
   </div>
 </template>
@@ -75,6 +76,7 @@ import { User } from '@/core/models/user/User.ts';
 import { PageRequestResponseData } from '@/shared/model/PageRequestResponseData.ts';
 import { UserPageRequestParams } from '@/shared/model/UserPageRequestParams.ts';
 import Paginator from '@/shared/components/Paginator.vue';
+import EditUser from '@/features/manage-users/components/EditUser.vue';
 
 const { getPagedUsers } = useUser();
 const { showSpinner, hideSpinner } = useSpinner();
@@ -167,9 +169,10 @@ const handleOpenEditDialog = (user: User) => {
   openEditDialog.value = true;
 };
 
-const handleCloseEditDialog = () => {
+const handleCloseEditDialog = async () => {
   selectedUser.value = null;
   openEditDialog.value = false;
+  await fetchPagedUsers();
 };
 
 const handleOpenAddDialog = () => {
