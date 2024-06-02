@@ -180,8 +180,6 @@ const handleCloseEditDialog = async () => {
 
 const handleOpenAddDialog = () => {
   openAddDialog.value = true;
-
-  o;
 };
 const handleCloseAddDialog = async () => {
   openAddDialog.value = false;

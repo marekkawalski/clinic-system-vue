@@ -6,6 +6,6 @@ export const PathConstants = {
   MANAGE_USERS_PATH: '/manage-users',
   DOCTORS_PATH: '/doctors',
   DOCTOR_DETAILS_PATH: '/doctors/:email',
-  MANAGE_APPOINTMENTS_PATH: '/manage-appointments/:id',
+  MANAGE_APPOINTMENTS_PATH: '/manage-appointments',
   MY_APPOINTMENTS_PATH: '/my-appointments',
 };

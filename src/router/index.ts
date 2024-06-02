@@ -8,6 +8,7 @@ import { authGuard } from '@/core/authentication/authGuard.ts';
 import Registration from '@/features/auth/registration/pages/Registration.vue';
 import ManageUsers from '@/features/manage-users/pages/ManageUsers.vue';
 import { UserRole } from '@/core/enums/UserRole.ts';
+import ManageAppointments from '@/features/manage-appointments/pages/ManageAppointments.vue';
 
 export type RouteMeta = {
   requiresAuth: boolean;
@@ -43,11 +44,14 @@ const routes: RouteRecordRaw[] = [
     meta: <RouteMeta>{ requiresAuth: true },
   },
   {
-    path: PathConstants.MANAGE_USERS_PATH,
-    name: 'Manage Users',
-    component: () => import('@/features/manage-users/pages/ManageUsers.vue'),
+    path: PathConstants.MANAGE_APPOINTMENTS_PATH,
+    name: 'Manage Appointments',
+    component: ManageAppointments,
     beforeEnter: authGuard,
-    meta: <RouteMeta>{ requiresAuth: true },
+    meta: <RouteMeta>{
+      requiresAuth: true,
+      roles: [UserRole.DOCTOR, UserRole.REGISTRAR],
+    },
   },
   {
     path: PathConstants.MANAGE_USERS_PATH,

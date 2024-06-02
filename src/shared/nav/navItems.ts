@@ -24,4 +24,10 @@ export const navItems: NavItemModel[] = [
     requireLogin: true,
     allowedRoles: [UserRole.ADMIN, UserRole.REGISTRAR, UserRole.DOCTOR],
   },
+  {
+    listItemText: 'Manage appointments',
+    listItemPath: PathConstants.MANAGE_APPOINTMENTS_PATH,
+    requireLogin: true,
+    allowedRoles: [UserRole.DOCTOR],
+  },
 ];
