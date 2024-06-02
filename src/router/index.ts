@@ -9,6 +9,7 @@ import Registration from '@/features/auth/registration/pages/Registration.vue';
 import ManageUsers from '@/features/manage-users/pages/ManageUsers.vue';
 import { UserRole } from '@/core/enums/UserRole.ts';
 import ManageAppointments from '@/features/manage-appointments/pages/ManageAppointments.vue';
+import DoctorDetails from '@/features/doctors/pages/DoctorDetails.vue';
 
 export type RouteMeta = {
   requiresAuth: boolean;
@@ -35,6 +36,11 @@ const routes: RouteRecordRaw[] = [
     path: PathConstants.DOCTORS_PATH,
     name: 'Doctors',
     component: Doctors,
+  },
+  {
+    path: PathConstants.DOCTOR_DETAILS_PATH,
+    name: 'Doctor Details',
+    component: DoctorDetails,
   },
   {
     path: PathConstants.MY_APPOINTMENTS_PATH,

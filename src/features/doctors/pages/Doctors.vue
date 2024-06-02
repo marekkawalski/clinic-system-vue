@@ -13,7 +13,7 @@
         </div>
         <div class="doctor-info">
           <h3 class="doctor-name">
-            <router-link class="no-link" :to="`${doctor.email}`">
+            <router-link class="no-link" :to="`${route.path}/${doctor.email}`">
               {{ doctor.name }} {{ doctor.surname }}
             </router-link>
           </h3>
@@ -72,6 +72,7 @@ import { PathConstants } from '@/core/constants/path.constants';
 import { PageRequestResponseData } from '@/shared/model/PageRequestResponseData.ts';
 import { useAuth } from '@/core/authentication/composables/useAuth.ts';
 import Paginator from '@/shared/components/Paginator.vue';
+import { useRoute } from 'vue-router';
 
 const userRequestParams = ref<PageRequestParams>({});
 const data = ref<PageRequestResponseData<Doctor> | undefined>(undefined);
@@ -79,6 +80,7 @@ const data = ref<PageRequestResponseData<Doctor> | undefined>(undefined);
 const { fetchPagedDoctors } = useDoctor();
 const { showSpinner, hideSpinner } = useSpinner();
 const { checkAccess } = useAuth();
+const route = useRoute();
 
 const getDoctors = async () => {
   showSpinner();
