@@ -24,7 +24,9 @@
           >
             Login
           </v-btn>
-          <v-btn v-else color="white" @click="logout"> Logout</v-btn>
+          <v-btn v-else color="secondary" variant="elevated" @click="logout">
+            Logout
+          </v-btn>
         </div>
       </div>
     </v-app-bar>
