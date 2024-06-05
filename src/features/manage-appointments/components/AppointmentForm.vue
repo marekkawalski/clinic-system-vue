@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted, onUnmounted, watch } from 'vue';
+import { onMounted, onUnmounted, watch } from 'vue';
 import { useField, useForm } from 'vee-validate';
 import { z } from 'zod';
 import { toTypedSchema } from '@vee-validate/zod';

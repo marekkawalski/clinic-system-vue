@@ -102,7 +102,6 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { Doctor } from '@/core/models/Doctor.ts';
 
 defineProps<{

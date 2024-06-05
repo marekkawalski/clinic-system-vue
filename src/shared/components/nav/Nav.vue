@@ -58,8 +58,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { navItems } from '@/shared/nav/navItems.ts';
-import NavItem from '@/shared/nav/NavItem.vue';
+import { navItems } from '@/shared/components/nav/navItems.ts';
+import NavItem from '@/shared/components/nav/NavItem.vue';
 import { useAuth } from '@/core/authentication/composables/useAuth.ts';
 import { PathConstants } from '@/core/constants/path.constants.ts';
 

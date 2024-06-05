@@ -25,10 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { eventBus } from '../eventBus';
 
-const props = defineProps<{
+defineProps<{
   open: boolean;
   dialogProps: {
     component: any;
