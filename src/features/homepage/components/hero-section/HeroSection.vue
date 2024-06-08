@@ -1,5 +1,5 @@
 <template>
-  <div class="hero-wrapper page-wrapper">
+  <div class="hero-wrapper page-wrapper" id="hero">
     <div>
       <h1>Delivering cutting edge medical systems</h1>
       <v-btn color="primary" @click="goToDoctors"> Schedule appointment</v-btn>

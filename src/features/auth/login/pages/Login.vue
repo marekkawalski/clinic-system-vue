@@ -15,6 +15,7 @@
                 outlined
                 dense
                 :error-messages="errors.email"
+                id="email-input"
               ></v-text-field>
               <v-text-field
                 v-model="password"
@@ -25,6 +26,7 @@
                 outlined
                 dense
                 :error-messages="errors.password"
+                id="password-input"
               ></v-text-field>
               <div class="d-flex justify-end">
                 <v-btn
@@ -37,7 +39,12 @@
               </div>
               <div class="container">
                 <div class="button-container">
-                  <v-btn variant="flat" type="submit" color="primary">
+                  <v-btn
+                    variant="flat"
+                    type="submit"
+                    color="primary"
+                    id="submit-btn"
+                  >
                     Login
                   </v-btn>
                 </div>
