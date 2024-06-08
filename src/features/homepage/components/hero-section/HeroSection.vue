@@ -21,7 +21,7 @@ const goToDoctors = () => {
 <style scoped>
 .hero-wrapper {
   background-image: linear-gradient(rgba(0, 0, 0, 0.236), rgba(0, 0, 0, 0.485)),
-    url('src/assets/images/clinic.webp');
+    url('@/assets/images/clinic.webp');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

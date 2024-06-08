@@ -117,7 +117,7 @@
               ></v-checkbox>
               <v-select
                 v-if="checkAccess([UserRole.ADMIN])"
-                v-model="role as UserRole"
+                v-model="role"
                 :items="Object.values(UserRole)"
                 label="Role"
               ></v-select>
@@ -228,7 +228,7 @@ const { value: postalCode } = useField('address.postalCode');
 const { value: houseNumber } = useField('address.houseNumber');
 const { value: apartmentNumber } = useField('address.apartmentNumber');
 const { value: enabled } = useField('adminManagedData.enabled');
-const { value: role } = useField('adminManagedData.role');
+const { value: role } = useField<UserRole>('adminManagedData.role');
 const { value: specialization } = useField('doctorDetails.specialization');
 const { value: education } = useField('doctorDetails.education');
 const { value: description } = useField('doctorDetails.description');
