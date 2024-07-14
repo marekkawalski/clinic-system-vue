@@ -9,7 +9,14 @@
         >
           <v-card-actions>
             <v-btn @click="onClose" color="primary"> Cancel</v-btn>
-            <v-btn type="submit" form="userForm" color="primary"> Save</v-btn>
+            <v-btn
+              type="submit"
+              form="userForm"
+              color="primary"
+              id="submit-button"
+            >
+              Save
+            </v-btn>
           </v-card-actions>
         </UserForm>
       </v-card-text>

@@ -5,7 +5,7 @@
     <v-card class="login-card">
       <v-card-title>{{ action }}</v-card-title>
       <v-card-text class="card-content">
-        <form @submit="onSubmit">
+        <form @submit="onSubmit" id="userForm">
           <!-- Basic Data Fields -->
           <div class="form-grid">
             <div>
@@ -14,6 +14,7 @@
                 label="Name"
                 outlined
                 dense
+                id="name-input"
                 :error-messages="errors['basicData.name']"
               ></v-text-field>
               <v-text-field
@@ -21,6 +22,7 @@
                 label="Surname"
                 outlined
                 dense
+                id="surname-input"
                 :error-messages="errors['basicData.surname']"
               ></v-text-field>
               <v-text-field
@@ -28,6 +30,7 @@
                 label="Email"
                 outlined
                 dense
+                id="email-input"
                 :error-messages="errors['basicData.email']"
               ></v-text-field>
               <v-text-field
@@ -42,6 +45,7 @@
                 label="PESEL"
                 outlined
                 dense
+                id="pesel-input"
                 :error-messages="errors['basicData.pesel']"
               ></v-text-field>
               <v-text-field
@@ -52,6 +56,7 @@
                 label="Password"
                 outlined
                 dense
+                id="password-input"
                 :error-messages="errors['basicData.password']"
               ></v-text-field>
               <v-text-field
@@ -60,6 +65,7 @@
                 label="Confirm Password"
                 outlined
                 dense
+                id="confirmPassword-input"
                 :error-messages="errors['basicData.confirmPassword']"
               ></v-text-field>
             </div>
@@ -70,6 +76,7 @@
                 label="Country"
                 outlined
                 dense
+                id="country-input"
                 :error-messages="errors['address.country']"
               ></v-text-field>
               <v-text-field
@@ -77,6 +84,7 @@
                 label="City"
                 outlined
                 dense
+                id="city-input"
                 :error-messages="errors['address.city']"
               ></v-text-field>
               <v-text-field
@@ -84,6 +92,7 @@
                 label="Street"
                 outlined
                 dense
+                id="street-input"
                 :error-messages="errors['address.street']"
               ></v-text-field>
               <v-text-field
@@ -91,6 +100,7 @@
                 label="Postal Code"
                 outlined
                 dense
+                id="postalCode-input"
                 :error-messages="errors['address.postalCode']"
               ></v-text-field>
               <v-text-field
@@ -98,6 +108,7 @@
                 label="House Number"
                 outlined
                 dense
+                id="houseNumber-input"
                 :error-messages="errors['address.houseNumber']"
               ></v-text-field>
               <v-text-field
@@ -105,6 +116,7 @@
                 label="Apartment Number"
                 outlined
                 dense
+                id="apartmentNumber-input"
                 :error-messages="errors['address.apartmentNumber']"
               ></v-text-field>
             </div>
@@ -150,7 +162,14 @@
             </div>
           </div>
 
-          <v-btn type="submit" color="primary">Submit</v-btn>
+          <template v-if="formType === FormType.PopupForm">
+            <slot></slot>
+          </template>
+          <template v-else>
+            <v-btn type="submit" color="primary" id="submit-button"
+              >Submit
+            </v-btn>
+          </template>
         </form>
       </v-card-text>
     </v-card>

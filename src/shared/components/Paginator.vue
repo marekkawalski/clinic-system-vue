@@ -7,8 +7,10 @@
       variant="solo"
       @update:modelValue="handlePageSizeChange"
       class="paginator-select"
+      id="page-size-select-input"
     />
     <v-pagination
+      id="my-paginator"
       v-model="pageNum"
       :length="totalPages"
       @update:modelValue="handlePageChange"
@@ -31,7 +33,7 @@ interface PaginatorComponentProps {
 
 const props = defineProps<PaginatorComponentProps>();
 
-const pageSizes = [5, 10, 20, 50, 100];
+const pageSizes = [5, 10, 15, 20, 50, 100];
 const pageSize = ref(props.requestParams['page-size'] ?? 10);
 const pageNum = ref(props.requestParams['page-num'] ?? 0);
 

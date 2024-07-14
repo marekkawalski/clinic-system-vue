@@ -11,7 +11,9 @@
               color="primary"
               @click="handleOpenAddDialog"
               start-icon="mdi-plus"
+              id="add-user-button"
             >
+              <v-icon>mdi-plus</v-icon>
               Add user
             </v-btn>
           </v-col>
