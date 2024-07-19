@@ -1,6 +1,6 @@
 <template>
   <slot></slot>
-  <v-container class="spinner" v-if="state.loading">
+  <v-container class="spinner" v-if="state.loading" id="spinner">
     <v-progress-circular
       indeterminate
       size="64"

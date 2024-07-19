@@ -46,7 +46,11 @@
                 {{ tableHelper.nestedPropertyAccessor(row, column) }}
               </td>
               <td>
-                <v-icon color="primary" @click="handleOpenEditDialog(row)">
+                <v-icon
+                  color="primary"
+                  @click="handleOpenEditDialog(row)"
+                  class="edit-user-button"
+                >
                   mdi-pencil
                 </v-icon>
               </td>

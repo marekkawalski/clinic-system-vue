@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isOpen" width="1200px">
+  <v-dialog v-model="isOpen" width="1200px" id="edit-user-popup">
     <v-card>
       <v-card-text class="pa-0 ma-0">
         <UserForm
@@ -7,10 +7,18 @@
           :action="'Edit User'"
           :formType="FormType.PopupForm"
           @close="onClose"
+          :key="user?.id"
         >
           <v-card-actions>
             <v-btn @click="onClose" color="primary"> Cancel</v-btn>
-            <v-btn type="submit" form="userForm" color="primary"> Save</v-btn>
+            <v-btn
+              type="submit"
+              form="userForm"
+              color="primary"
+              id="submit-button"
+            >
+              Save
+            </v-btn>
           </v-card-actions>
         </UserForm>
       </v-card-text>

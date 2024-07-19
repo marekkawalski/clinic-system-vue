@@ -38,6 +38,7 @@
                 label="Phone Number"
                 outlined
                 dense
+                id="phoneNumber-input"
                 :error-messages="errors['basicData.phoneNumber']"
               ></v-text-field>
               <v-text-field
