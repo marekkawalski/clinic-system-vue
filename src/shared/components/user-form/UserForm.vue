@@ -189,6 +189,7 @@ import { UserRole } from '@/core/enums/UserRole';
 import { UserFormData } from './models/UserFormData';
 import { userFormSchema } from './validation/userFormSchema';
 import { FormType } from '@/shared/enums/FormType';
+import { useSpinner } from '@/shared/spinner/composables/useSpinner.ts';
 
 const props = defineProps({
   userId: String,
@@ -258,34 +259,37 @@ const { register } = useRegister();
 const { showSnackbar } = useSnackbar();
 const { checkAccess } = useAuth();
 const showPassword = ref(false);
-
-onMounted(() => {
+const { showSpinner, hideSpinner } = useSpinner();
+onMounted(async () => {
   if (props.userId) {
-    getUserById(props.userId).then(user => {
-      resetForm({
-        values: {
-          basicData: {
-            name: user.name,
-            surname: user.surname,
-            email: user.email,
-            phoneNumber: user?.phoneNumber ?? '',
-            pesel: user.pesel,
-            password: '',
-            confirmPassword: '',
+    showSpinner();
+    await getUserById(props.userId)
+      .then(user => {
+        resetForm({
+          values: {
+            basicData: {
+              name: user.name,
+              surname: user.surname,
+              email: user.email,
+              phoneNumber: user?.phoneNumber ?? '',
+              pesel: user.pesel,
+              password: '',
+              confirmPassword: '',
+            },
+            address: user.address,
+            adminManagedData: {
+              role: user.role,
+              enabled: user.isEnabled,
+            },
+            doctorDetails: user.doctorDetails ?? {
+              specialization: '',
+              education: '',
+              description: '',
+            },
           },
-          address: user.address,
-          adminManagedData: {
-            role: user.role,
-            enabled: user.isEnabled,
-          },
-          doctorDetails: user.doctorDetails ?? {
-            specialization: '',
-            education: '',
-            description: '',
-          },
-        },
-      });
-    });
+        });
+      })
+      .finally(() => hideSpinner());
   }
 });
 
@@ -305,7 +309,9 @@ const onSubmit = handleSubmit(async formData => {
 
   try {
     if (props.userId) {
+      showSpinner();
       const response = await updateUser(data, props.userId);
+      hideSpinner();
       if (response) {
         showSnackbar(
           `User ${response.name} ${response.surname} updated successfully`,
@@ -313,6 +319,7 @@ const onSubmit = handleSubmit(async formData => {
         );
       }
     } else {
+      showSpinner();
       const response = await register(data);
       if (response) {
         showSnackbar(
@@ -320,6 +327,7 @@ const onSubmit = handleSubmit(async formData => {
           'success',
         );
       }
+      hideSpinner();
     }
 
     if (props.formType === FormType.PopupForm && props.onClose) {

@@ -1,5 +1,6 @@
 {
   "name": "clinic-system-vue",
+  "author": "Marek Kawalski",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,26 +10,29 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.4.2",
-    "@mdi/font": "^7.4.47",
-    "@mdi/js": "^7.4.47",
-    "@types/vue-router": "^4.3.2",
-    "@vee-validate/zod": "^4.12.8",
-    "axios": "^1.7.2",
-    "date-fns": "^3.6.0",
-    "vee-validate": "^4.12.8",
-    "vue": "^3.4.21",
-    "vue-router": "^4.3.2",
-    "vuetify": "^3.6.7",
-    "zod": "^3.23.8"
+    "@hookform/resolvers": "~3.9.0",
+    "@mdi/font": "~7.4.47",
+    "@mdi/js": "~7.4.47",
+    "@types/vue-router": "~4.3.2",
+    "@vee-validate/zod": "~4.13.2",
+    "axios": "~1.7.2",
+    "date-fns": "~3.6.0",
+    "vee-validate": "~4.13.2",
+    "vue": "~3.4.33",
+    "vue-router": "~4.4.0",
+    "vuetify": "~3.6.13",
+    "zod": "~3.23.8"
   },
   "devDependencies": {
-    "@types/axios": "^0.14.0",
-    "@types/vue-router": "^2.0.0",
-    "@vitejs/plugin-vue": "^5.0.4",
-    "sass": "^1.75.0",
-    "typescript": "^5.4.5",
-    "vite": "^5.2.0",
-    "vue-tsc": "^2.0.6"
+    "@types/axios": "~0.14.0",
+    "@types/vue-router": "~2.0.0",
+    "@vitejs/plugin-vue": "~5.0.5",
+    "rollup-plugin-visualizer": "^5.12.0",
+    "sass": "~1.77.8",
+    "terser": "^5.31.3",
+    "typescript": "~5.5.3",
+    "vite": "~5.3.4",
+    "vite-plugin-compression": "^0.5.1",
+    "vue-tsc": "~2.0.26"
   }
 }
