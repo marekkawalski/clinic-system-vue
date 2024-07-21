@@ -60,10 +60,20 @@ export const useUser = () => {
     }
   };
 
+  const deleteUser = async (userId: string) => {
+    showSpinner();
+    try {
+      await axiosInstance.patch<void>(`/users/${userId}/disable`, {});
+    } finally {
+      hideSpinner();
+    }
+  };
+
   return {
     updateUser,
     getUserById,
     getUserByEmail,
     getPagedUsers,
+    deleteUser,
   };
 };

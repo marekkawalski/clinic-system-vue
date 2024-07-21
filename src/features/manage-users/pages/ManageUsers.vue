@@ -38,6 +38,7 @@
                 {{ tableHelper.baseColumnTitles[i] }}
               </th>
               <th id="th-edit">Edit</th>
+              <th id="th-delete">Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -52,6 +53,14 @@
                   class="edit-user-button"
                 >
                   mdi-pencil
+                </v-icon>
+              </td>
+              <td>
+                <v-icon
+                  color="error"
+                  @click="handleDeleteUser(row.id)"
+                  class="delete-user-button"
+                  >mdi-delete
                 </v-icon>
               </td>
             </tr>
@@ -85,9 +94,11 @@ import { UserPageRequestParams } from '@/shared/model/UserPageRequestParams.ts';
 import Paginator from '@/shared/components/Paginator.vue';
 import EditUser from '@/features/manage-users/components/EditUser.vue';
 import AddUser from '@/features/manage-users/components/AddUser.vue';
+import { useSnackbar } from '@/shared/snackbar/composables/useSnackbar.ts';
 
-const { getPagedUsers } = useUser();
+const { getPagedUsers, deleteUser } = useUser();
 const { showSpinner, hideSpinner } = useSpinner();
+const { showSnackbar } = useSnackbar();
 const tableHelper = new TableHelper();
 
 const dataSource = ref<User[]>([]);
@@ -145,7 +156,19 @@ const fetchPagedUsers = async () => {
         lastLogin: 'Last Login',
       },
     );
-    tableHelper.setAllColumnNames(['edit']);
+    tableHelper.setAllColumnNames(['edit', 'delete']);
+  } finally {
+    hideSpinner();
+  }
+};
+
+const handleDeleteUser = async (userId: string) => {
+  showSpinner();
+  try {
+    await deleteUser(userId).then(() => {
+      showSnackbar(`User with id ${userId} has been deleted`, 'success');
+    });
+    await fetchPagedUsers();
   } finally {
     hideSpinner();
   }
