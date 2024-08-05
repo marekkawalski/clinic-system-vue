@@ -1,0 +1,265 @@
+@startuml
+skinparam classAttributeIconSize 0
+skinparam wrapWidth 180
+skinparam maxMessageSize 180
+
+skinparam class {
+    AttributeFontSize 25
+    FontSize 25
+
+}
+
+skinparam package {
+    AttributeFontSize 30
+    FontSize 30
+
+}
+
+' Set page size to A4 vertical with margins
+skinparam page {
+    size A4
+    orientation portrait
+    margin 10
+}
+
+' Use vertical layout for overall structure
+top to bottom direction
+
+package features {
+    ' First column
+    package homepage {
+        package components {
+            package feature_section {
+                class FeatureSection
+            }
+            package hero_section {
+                class HeroSection
+            }
+        }
+        package pages {
+            class Home
+        }
+    }
+
+    package auth {
+        package login {
+            package pages {
+                class Login
+            }
+        }
+        package registration {
+            package pages {
+                class Registration
+            }
+        }
+    }
+
+    package doctors {
+        package components {
+            class DoctorInfo
+            class DoctorSchedule
+            class Examination
+            class ScheduleAppointment
+        }
+        package composables {
+            class useDoctor
+            class useExamination
+        }
+        package model {
+            class DoctorModel
+        }
+        package pages {
+            class Doctors
+            class DoctorDetails
+        }
+    }
+
+    ' Hidden line to create space for second column and align homepage with manage_appointments
+    homepage -[hidden]right-> manage_appointments
+
+    ' Second column
+    package manage_appointments {
+        package components {
+            class AppointmentForm
+        }
+        package pages {
+            class ManageAppointments
+            class Appointment
+        }
+    }
+
+    package manage_users {
+        package components {
+            class AddUser
+            class EditUser
+        }
+        package pages {
+            class ManageUsers
+        }
+    }
+
+    package my_appointments {
+        package pages {
+            class MyAppointments
+        }
+    }
+
+    ' Align columns
+    homepage -[hidden]down-> auth
+    auth -[hidden]down-> doctors
+
+    manage_appointments -[hidden]down-> manage_users
+    manage_users -[hidden]down-> my_appointments
+}
+
+package app {
+    class App
+}
+
+class Router
+
+package core {
+    left to right direction
+
+    package authentication {
+        package composables {
+            class useAuth
+            class useRegister
+        }
+        class authGuard
+    }
+
+    package constants {
+        class AppConstants
+        class pathConstants
+    }
+
+    package enums {
+        enum AppointmentStatus
+        enum ExaminationStatus
+        enum UserRole
+    }
+
+    package composables {
+        class useUser
+    }
+
+    package models {
+        package appointment {
+            class Appointment
+        }
+        package user {
+            class Address
+            class AuthData
+            class Doctor
+            class DoctorDetails
+            class Examination
+        }
+    }
+
+    authentication -[hidden]-> constants
+    authentication -[hidden]-> enums
+    authentication -[hidden]-> composables
+    authentication -[hidden]-> models
+    constants -[hidden]-> enums
+    constants -[hidden]-> composables
+    constants -[hidden]-> models
+    enums -[hidden]-> composables
+    enums -[hidden]-> models
+    composables -[hidden]-> models
+}
+
+package shared {
+    left to right direction
+
+    class axiosInstance
+
+    package components {
+        package nav {
+            class Nav
+            class NavItem
+        }
+        package user_form {
+            class Footer
+            class Paginator
+        }
+    }
+
+    package composables {
+        class useAppointment
+    }
+
+    package enums {
+        class FormType
+    }
+
+    package form_dialog {
+        class FormDialog
+        class useFormDialog
+    }
+
+    package helpers {
+        class DateHelper
+        class HttpParamsHelper
+        class TableHelper
+    }
+
+    package model {
+        class AppointmentPageRequestParams
+        class ExaminationPageRequestParams
+        class PageRequestParams
+        class PageRequestResponseData
+        class UserPageRequestParams
+    }
+
+    package snackbar {
+        package composables {
+            class useSnackbar
+        }
+        package model {
+            class SnackBar
+            class snackBarEventBus
+        }
+    }
+
+    package spinner {
+        package composables {
+            class useSpinner
+        }
+        package model {
+            class Spinner
+            class eventBus
+        }
+    }
+
+    components -[hidden]-> enums
+    components -[hidden]-> helpers
+    components -[hidden]-> composables
+    components -[hidden]-> model
+    components -[hidden]-> form_dialog
+    enums -[hidden]-> helpers
+    enums -[hidden]-> composables
+    enums -[hidden]-> model
+    enums -[hidden]-> form_dialog
+    helpers -[hidden]-> composables
+    helpers -[hidden]-> model
+    helpers -[hidden]-> form_dialog
+    composables -[hidden]-> model
+    composables -[hidden]-> form_dialog
+    model -[hidden]-> form_dialog
+    form_dialog -[hidden]-> snackbar
+    snackbar -[hidden]-> spinner
+}
+App --> Router : uses
+
+Nav --> NavItem
+
+Router --> features : routes
+
+features --> core : uses
+features --> shared : uses
+
+features -[hidden]down-> app
+app -[hidden]down-> core
+
+@enduml
