@@ -13,14 +13,14 @@
     "@hookform/resolvers": "~3.9.0",
     "@mdi/font": "~7.4.47",
     "@mdi/js": "~7.4.47",
-    "@types/vue-router": "~4.3.2",
+    "@types/vue-router": "^2.0.0",
     "@vee-validate/zod": "~4.13.2",
     "axios": "~1.7.2",
     "date-fns": "~3.6.0",
     "vee-validate": "~4.13.2",
-    "vue": "~3.4.33",
-    "vue-router": "~4.4.0",
-    "vuetify": "~3.6.13",
+    "vue": "~3.4.37",
+    "vue-router": "~4.4.3",
+    "vuetify": "~3.6.14",
     "zod": "~3.23.8"
   },
   "devDependencies": {
@@ -31,8 +31,8 @@
     "sass": "~1.77.8",
     "terser": "^5.31.3",
     "typescript": "~5.5.3",
-    "vite": "~5.3.4",
+    "vite": "~5.4.0",
     "vite-plugin-compression": "^0.5.1",
-    "vue-tsc": "~2.0.26"
+    "vue-tsc": "~2.0.29"
   }
 }

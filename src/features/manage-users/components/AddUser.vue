@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isOpen" width="1200px">
+  <v-dialog v-model="isOpen" width="1200px" id="addUserPopup">
     <v-card>
       <v-card-text class="pa-0 ma-0">
         <UserForm
