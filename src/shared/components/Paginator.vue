@@ -38,7 +38,7 @@ const pageSize = ref(props.requestParams['page-size'] ?? 10);
 const pageNum = ref(props.requestParams['page-num'] ?? 0);
 
 const totalPages = computed(() => {
-  return props.data ? props.data.totalPages : 0;
+  return props.data ? props.data.totalPages -1 : 0;
 });
 
 const handlePageChange = (value: number) => {
